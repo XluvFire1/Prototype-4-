@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float Speed = 1;
     private Rigidbody2D _enemyRb;
-    private Rigidbody2D _player;
+    private GameObject _player;
 
     // Start is called before the first frame update
     void Start()

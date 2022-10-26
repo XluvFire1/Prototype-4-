@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float Speed = 1;
+    public float Speed = 10;
     private Rigidbody2D _playerRb;
     // Start is called before the first frame update
     void Start()
