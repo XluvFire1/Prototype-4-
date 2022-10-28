@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Speed = 10;
+    public GameObject ExplosionFX;
     private Rigidbody2D _playerRb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +22,15 @@ public class PlayerController : MonoBehaviour
 
         Vector2 direction = new Vector2(horizontalInput, verticalInput);
         _playerRb.AddForce(direction * Speed);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            Instantiate(ExplosionFX, transform.position, ExplosionFX.transform.rotation);
+            Destroy(this.gameObject);
+        }
     }
 }
