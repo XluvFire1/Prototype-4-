@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Enemy
+  - PowerUp
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: Front
     uniqueID: 2865027735
+    locked: 0
+  - name: PowerUp
+    uniqueID: 1660491797
     locked: 0

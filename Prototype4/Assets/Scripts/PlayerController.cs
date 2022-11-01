@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManager;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public float Speed = 10;
     public GameObject ExplosionFX;
+    public GameObject PowerupIndicator;
+    public bool HasPowerup = false;
     private Rigidbody2D _playerRb;
     
     // Start is called before the first frame update
@@ -34,5 +36,20 @@ public class PlayerController : MonoBehaviour
             gameObject.SetActive(false);
             SceneManager.LoadScene(0);
         }
+
+        if(other.gameObject.CompareTag("PowerUp"))
+        {
+            Destroy(other.gameObject);
+            PowerupIndicator.gameObject.SetActive(true);
+            HasPowerup = true;
+            StartCoroutine(PowerupCountdownRoutine());
+        }
+    }
+
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(5);
+        PowerupIndicator.gameObject.SetActive(false);
+        HasPowerup = false;
     }
 }
